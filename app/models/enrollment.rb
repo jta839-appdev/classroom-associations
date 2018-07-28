@@ -9,11 +9,6 @@
 #  updated_at :datetime         not null
 #
 
-require Rails.root.join("spec", "support", "increasing_random.rb")
-
-FactoryBot.define do
-  factory :enrollment do
-    sequence(:student_id) { |n| "Some fake student ID #{n}" }
-    sequence(:course_id) { |n| "Some fake course ID #{n}" }
-  end
+class Enrollment < ApplicationRecord
+    validates :course_id, :student_id, presence: true
 end
